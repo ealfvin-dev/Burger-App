@@ -1,2 +1,13 @@
-<h1>Hello Burger World</h1>
-<div>{{things}}</div>
+<div>
+    {{#each burgers}}
+        {{#if this.devoured}}
+
+        {{else}}
+            <div>
+                <br/>
+                <span>{{this.name}}</span> <span><button data-id={{this.id}}>Eat</button></span>
+                <br/>
+            </div>
+        {{/if}}
+    {{/each}}
+</div>

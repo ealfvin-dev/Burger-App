@@ -1,13 +1,19 @@
 var connection = require("./connection.js");
 
 var orm = {
-    selectAll: function() {
-
+    selectAll: function(cb) {
+        connection.query("SELECT * FROM burgers", function(err, data) {
+            if(err) throw err;
+            cb(data);
+        });
     },
-    insertOne: function(burgerName) {
-
+    insertOne: function(burgerName, cb) {
+        connection.query("INSERT INTO burgers(name) VALUES(?)", [burgerName], function(err, response) {
+            if(err) throw err;
+            cb();
+        });
     },
-    eatOne: function(burgerName) {
+    eatOne: function(burgerID) {
 
     }
 };
