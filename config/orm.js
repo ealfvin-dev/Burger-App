@@ -13,8 +13,11 @@ var orm = {
             cb();
         });
     },
-    eatOne: function(burgerID) {
-
+    eatOne: function(burgerID, cb) {
+        connection.query("UPDATE burgers SET devoured = true WHERE id = ?", [burgerID], function(err, response) {
+            if(err) throw err;
+            cb();
+        });
     }
 };
 

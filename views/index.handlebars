@@ -1,13 +1,28 @@
-<div>
-    {{#each burgers}}
-        {{#if this.devoured}}
+<div class="containter">
+    <div class="row">
+        <div class="col-lg-6">
+            {{#each burgers}}
+                {{#if this.devoured}}
 
-        {{else}}
-            <div>
-                <br/>
-                <span>{{this.name}}</span> <span><button data-id={{this.id}}>Eat</button></span>
-                <br/>
-            </div>
-        {{/if}}
-    {{/each}}
+                {{else}}
+                    <div>
+                        <br/>
+                        <span>{{this.name}}</span> <span><button type="button" class="eatButton" data-id={{this.id}}>Eat</button></span>
+                        <br/>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+        <div class="col-lg-6">
+            {{#each burgers}}
+                {{#if this.devoured}}
+                    <div>
+                        <br/>
+                        {{this.name}} - eaten
+                        <br/>
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
 </div>

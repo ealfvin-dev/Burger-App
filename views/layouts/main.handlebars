@@ -22,7 +22,7 @@
             <input class="form-control" id="Input">
         </div>
     
-        <button type="submit" class="btn btn-danger" id="Add">Add Burger</button>
+        <button class="btn btn-danger" id="Add">Add Burger</button>
     </form>
     
     <script>
@@ -34,8 +34,6 @@
         };
 
         $("#Add").on("click", function(event) {
-            event.preventDefault();
-
             const burgerName = $("#Input").val();
             $("#Input").val("");
 
@@ -45,10 +43,23 @@
 
             const burger = new Burger(burgerName);
 
-            $.ajax({
+            $.ajax("/api/burgers", {
                 type: "POST",
-                url: "/api/burgers",
-                data: {name: burger.name}
+                data: burger
+            }).then(function() {
+                location.reload();
+            });
+        });
+
+        $(".eatButton").on("click", function(event) {
+            const id = $(this).data("id");
+            console.log(id);
+
+            $.ajax("/api/burgers/" + id, {
+                type: "PUT",
+                data: null
+            }).then(function() {
+                location.reload();
             });
         });
     </script>
