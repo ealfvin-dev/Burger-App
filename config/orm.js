@@ -10,13 +10,13 @@ var orm = {
     insertOne: function(burgerName, cb) {
         connection.query("INSERT INTO burgers(name) VALUES(?)", [burgerName], function(err, response) {
             if(err) throw err;
-            cb();
+            cb(response);
         });
     },
     eatOne: function(burgerID, cb) {
         connection.query("UPDATE burgers SET devoured = true WHERE id = ?", [burgerID], function(err, response) {
             if(err) throw err;
-            cb();
+            cb(response);
         });
     }
 };
