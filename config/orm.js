@@ -4,10 +4,10 @@ var orm = {
     selectAll: function() {
 
     },
-    insertOne: function() {
+    insertOne: function(burgerName) {
 
     },
-    eatOne: function() {
+    eatOne: function(burgerName) {
 
     }
 };
